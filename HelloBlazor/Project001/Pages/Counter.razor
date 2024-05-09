@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@inject StateService StateService
 
 <PageTitle>Counter</PageTitle>
 
@@ -11,9 +12,14 @@
 @code {
     private int currentCount = 0;
 
+    protected override void OnInitialized()
+    {
+        StateService.CurrentCount.Value = currentCount;
+    }
+
     private void IncrementCount()
     {
         currentCount++;
+        StateService.CurrentCount.Value = currentCount;
     }
-
 }
