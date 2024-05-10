@@ -1,0 +1,46 @@
+@page "/BmiCalc"
+<h3>BMIの計算</h3>
+<!-- class="="table"はBootstrapが提供するクラス -->
+<table class="table">
+    <tr>
+        <td>名前</td>
+        <td>
+            <input @bind-value="bmi.Name"/>
+        </td>
+    </tr>
+    <tr>
+        <td>身長(cm)</td>
+        <td>
+            <input @bind-value="bmi.Height"/>
+        </td>
+    </tr>
+    <tr>
+        <td>体重(kg)</td>
+        <td>
+            <input @bind-value="bmi.Weight"/>
+        </td>
+    </tr>
+    <tr>
+        <td>BMI</td>
+        <td>@result.ToString("00.0")</td>
+    </tr>
+</table>
+
+<button class="btn btn-primary" @onclick="onCalc">計算する</button>
+
+@code {
+
+    BmiItem bmi = new()
+    {
+        Name = "山田太郎",
+        Height = 160.0f,
+        Weight = 60.0f
+    };
+    
+    private double result { get; set; }
+
+    private void onCalc()
+    {
+        this.result = bmi.Bmi;
+    }
+}

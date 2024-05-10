@@ -20,7 +20,7 @@
 </div>
 
 @code {
-    CompositeDisposable disposables = new();
+    readonly CompositeDisposable disposables = new();
     protected override void OnInitialized()
     {
         // StateHasChangedを呼んで画面更新
