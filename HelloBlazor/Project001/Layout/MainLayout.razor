@@ -20,12 +20,17 @@
 </div>
 
 @code {
-
+    CompositeDisposable disposables = new();
     protected override void OnInitialized()
     {
-        // TODO: Disposeはいつやればいい？
         // StateHasChangedを呼んで画面更新
         StateService.CurrentCount
-            .Subscribe(_ => InvokeAsync(StateHasChanged));
+            .Subscribe(_ => InvokeAsync(StateHasChanged))
+            .AddTo(disposables);
+    }
+    
+    protected void Dispose(bool disposing)
+    {
+        disposables.Dispose();
     }
 }
