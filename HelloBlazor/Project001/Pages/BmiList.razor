@@ -1,0 +1,32 @@
+@page "/BmiList"
+@using Project001.Components
+<h3>BmiList</h3>
+<!-- 子コンポーネントを使い、リストで表示する -->
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <td>名前</td>
+        <td>身長</td>
+        <td>体重</td>
+        <td>BMI</td>
+    </tr>
+    </thead>
+    @foreach (var it in Items)
+    {
+        <BmiChild Item="@it"/>
+    }
+</table>
+
+@code {
+    private List<BmiItem> Items { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        Items = new List<BmiItem>
+        {
+            new BmiItem { Name = "山田太郎", Height = 160.0f, Weight = 60.0f },
+            new BmiItem { Name = "田中花子", Height = 150.0f, Weight = 50.0f },
+            new BmiItem { Name = "佐藤次郎", Height = 170.0f, Weight = 70.0f }
+        };
+    }
+}
