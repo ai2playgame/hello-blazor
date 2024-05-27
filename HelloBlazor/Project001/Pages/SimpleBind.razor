@@ -1,0 +1,24 @@
+@page "/SimpleBind"
+<h3>SimpleBind</h3>
+<div class="form-group">
+    <label class="col-form-label">タイトルを入力</label>
+    <input @bind="Title1" class="form-control" />
+</div>
+<div>
+    <label class="col-form-label">フォーカスが外れたときに更新する</label>
+    <div>@Title1</div>
+</div>
+<div>
+    <label class="col-form-label">タイトルを入力②</label>
+    <!-- @bind:eventで。 -->
+    <input @bind="Title2" @bind:event="oninput" class="form-control" />
+</div>
+<div>
+    <label class="col-form-label">随時更新</label>
+    <div>@Title2</div>
+</div>
+
+@code {
+    private string Title1 { get; set; }
+    private string Title2 { get; set; }
+}
