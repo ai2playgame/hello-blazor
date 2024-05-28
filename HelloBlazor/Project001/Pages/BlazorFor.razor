@@ -1,0 +1,37 @@
+@page "/BlazorFor"
+<h3>繰り返し文を利用</h3>
+
+<table class="table">
+    @foreach (var book in books)
+    {
+        <tr>
+            <td>@book.Title -- 著 @book.Author</td>
+            <td>@book.Price 円</td>
+            <td>出版社 @book.Publisher</td>
+        </tr>
+    }
+</table>
+@code {
+    public class Book
+    {
+        public string Title { get; init; }
+        public string Author { get; init; }
+        public int Price { get; init; }
+        public string Publisher { get; init; }
+    }
+
+    private List<Book> books;
+
+    protected override void OnInitialized()
+    {
+        books = new List<Book>
+        {
+            // ダミーのBookインスタンスを4つ作成
+            new() { Title = "タイトル1", Author = "著者1", Price = 1000, Publisher = "出版社1" },
+            new() { Title = "タイトル2", Author = "著者2", Price = 2000, Publisher = "出版社2" },
+            new() { Title = "タイトル3", Author = "著者3", Price = 3000, Publisher = "出版社3" },
+            new() { Title = "タイトル4", Author = "著者4", Price = 4000, Publisher = "出版社4" },
+        };
+    }
+
+}
