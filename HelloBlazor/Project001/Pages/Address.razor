@@ -1,0 +1,47 @@
+@page "/Address"
+@inherits Project001.Models.Address.AddressModel
+
+<h3>住所登録</h3>
+
+<table class="table">
+    <tr>
+        <td>郵便番号</td>
+        <td><input type="text" @bind="ZipCode" class="form-control"/></td>
+    </tr>
+    <tr>
+        <td>都道府県</td>
+        <td>
+            <select @bind="Prefecture" class="form-control">
+                @foreach (var it in Prefectures)
+                {
+                    <option>@it</option>
+                }
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>電話番号</td>
+        <td>
+            <input type="text" @bind="Telephone" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>名前</td>
+        <td>
+            <input type="text" @bind="Name" class="form-control"/>
+        </td>
+    </tr>
+    <tr>
+        <td>年齢</td>
+        <td>
+            <input type="number" @bind="Age" class="form-control"/>
+        </td>
+    </tr>
+</table>
+
+<div style="margin-top: 20px">
+    <button class="btn btn-primary" @onclick="OnSubmit">登録</button>
+</div>
+<div style="margin-top: 20px">
+    @Message
+</div>
